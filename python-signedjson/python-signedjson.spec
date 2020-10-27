@@ -11,6 +11,8 @@ License:        ASL 2.0
 URL:            https://github.com/matrix-org/python-signedjson
 Source0:        %{pypi_source}
 
+Patch0:         https://github.com/matrix-org/python-signedjson/commit/c40c83f844fee3c1c7b0c5d1508f87052334b4e5.patch
+
 BuildArch:      noarch
 
 %global _description %{expand:
@@ -35,17 +37,17 @@ BuildRequires:  python3dist(unpaddedbase64) >= 1.0.1
 BuildRequires:  python3dist(pynacl) >= 0.3
 BuildRequires:  python3dist(typing-extensions) >= 3.5
 %endif
+%if 0%{?centos} || 0%{?fedora} < 32
+BuildRequires:  python3dist(importlib-metadata)
+%endif
 
 %description -n python3-%{srcname} %{_description}
 
 Python 3 version.
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -p1 -n %{srcname}-%{version}
 rm -vr *.egg-info
-# This is standard thing in 3.8+
-sed -i -e "/importlib_metadata/d" setup.py
-sed -i -e "s/importlib_metadata/importlib.metadata/" %{srcname}/__init__.py
 
 %build
 %py3_build
