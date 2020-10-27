@@ -14,8 +14,7 @@ URL:        https://github.com/matrix-org/%{srcname}
 Source0:    %{url}/archive/v%{version}%{rcx}/%{srcname}-%{version}%{rcx}.tar.gz
 Source1:    synapse.sysconfig
 Source2:    synapse.service
-# https://github.com/matrix-org/synapse/pull/8208
-Patch1:     0001-Use-TLSv1.2-for-fake-servers-in-tests.patch
+
 BuildArch:  noarch
 
 BuildRequires:  python3-devel
