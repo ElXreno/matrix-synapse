@@ -31,7 +31,7 @@ BuildRequires:  python3-attrs >= 19.1.0
 BuildRequires:  python3-authlib
 BuildRequires:  python3-bcrypt >= 3.1.0
 BuildRequires:  python3-bleach >= 1.4.3
-BuildRequires:  python3-canonicaljson >= 1.1.3
+BuildRequires:  python3-canonicaljson >= 1.4.0
 BuildRequires:  python3-daemonize >= 2.3.1
 BuildRequires:  python3-frozendict >= 1.0
 BuildRequires:  python3-idna >= 2.5
