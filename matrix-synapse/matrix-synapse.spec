@@ -5,62 +5,63 @@
 
 %{?python_enable_dependency_generator}
 
-Name:       matrix-%{srcname}
-Version:    1.22.0
-Release:    1%{?dist}
-Summary:    A Matrix reference homeserver written in Python using Twisted
-License:    ASL 2.0
-URL:        https://github.com/matrix-org/%{srcname}
-Source0:    %{url}/archive/v%{version}%{rcx}/%{srcname}-%{version}%{rcx}.tar.gz
-Source1:    synapse.sysconfig
-Source2:    synapse.service
+Name:           matrix-%{srcname}
+Version:        1.22.1
+Release:        1%{?dist}
+Summary:        A Matrix reference homeserver written in Python using Twisted
+License:        ASL 2.0
+URL:            https://github.com/matrix-org/%{srcname}
+Source0:        %{url}/archive/v%{version}%{rcx}/%{srcname}-%{version}%{rcx}.tar.gz
+Source1:        synapse.sysconfig
+Source2:        synapse.service
 
-BuildArch:  noarch
+BuildArch:      noarch
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-
-# Test dependencies
-BuildRequires:  python3-mock >= 2.0
-BuildRequires:  python3-parameterized >= 0.7.0
-BuildRequires:  /usr/bin/openssl
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3dist(setuptools)
 
 # Package dependencies
-#BuildRequires:  python3-txacme >= 0.9.2
-BuildRequires:  python3-attrs >= 19.1.0
-BuildRequires:  python3-authlib
-BuildRequires:  python3-bcrypt >= 3.1.0
-BuildRequires:  python3-bleach >= 1.4.3
-BuildRequires:  python3-canonicaljson >= 1.4.0
-BuildRequires:  python3-daemonize >= 2.3.1
-BuildRequires:  python3-frozendict >= 1.0
-BuildRequires:  python3-idna >= 2.5
-BuildRequires:  python3-jinja2 >= 2.9
-BuildRequires:  python3-jsonschema >= 2.5.1
-BuildRequires:  python3-jwt
-BuildRequires:  python3-lxml >= 3.5.0
-BuildRequires:  python3-matrix-synapse-ldap3 >= 0.1
-BuildRequires:  python3-msgpack >= 0.5.2
-BuildRequires:  python3-netaddr >= 0.7.18
-BuildRequires:  python3-phonenumbers >= 8.2.0
-BuildRequires:  python3-pillow >= 4.3.0
-BuildRequires:  python3-prometheus_client < 0.9.0
-BuildRequires:  python3-pyOpenSSL >= 16.0.0
-BuildRequires:  python3-pyasn1 >= 0.1.9
-BuildRequires:  python3-pyasn1-modules >= 0.0.7
-BuildRequires:  python3-pymacaroons-pynacl >= 0.13.0
-BuildRequires:  python3-pynacl >= 1.2.1
-BuildRequires:  python3-pysaml2 >= 4.5.0
-BuildRequires:  python3-pyyaml >= 3.11
-BuildRequires:  python3-service-identity >= 18.1.0
-BuildRequires:  python3-signedjson >= 1.1.0
-BuildRequires:  python3-sortedcontainers >= 1.4.4
-BuildRequires:  python3-systemd >= 231
-BuildRequires:  python3-treq >= 15.1
-BuildRequires:  python3-twisted >= 18.9.0
-BuildRequires:  python3-typing-extensions >= 3.7.4
-BuildRequires:  python3-unpaddedbase64 >= 1.1.0
+BuildRequires:  python3dist(attrs) >= 19.1.0
+BuildRequires:  python3dist(authlib)
+BuildRequires:  python3dist(bcrypt) >= 3.1.0
+BuildRequires:  python3dist(bleach) >= 1.4.3
+BuildRequires:  python3dist(canonicaljson) >= 1.4
+BuildRequires:  python3dist(daemonize) >= 2.3.1
+BuildRequires:  python3dist(frozendict) >= 1.0
+BuildRequires:  python3dist(hiredis)
+BuildRequires:  python3dist(idna) >= 2.5
+BuildRequires:  python3dist(jinja2) >= 2.9
+BuildRequires:  python3dist(jsonschema) >= 2.5.1
+BuildRequires:  python3dist(pyjwt)
+BuildRequires:  python3dist(lxml) >= 3.5.0
+BuildRequires:  python3dist(matrix-synapse-ldap3) >= 0.1
+BuildRequires:  python3dist(msgpack) >= 0.5.2
+BuildRequires:  python3dist(netaddr) >= 0.7.18
+BuildRequires:  python3dist(phonenumbers) >= 8.2.0
+BuildRequires:  python3dist(pillow) >= 4.3.0
+BuildRequires:  python3dist(prometheus-client) < 0.9
+BuildRequires:  python3dist(pyasn1) >= 0.1.9
+BuildRequires:  python3dist(pyasn1-modules) >= 0.0.7
+BuildRequires:  python3dist(pymacaroons) >= 0.13
+BuildRequires:  python3dist(pynacl) >= 1.2.1
+BuildRequires:  python3dist(pyopenssl) >= 16.0.0
+BuildRequires:  python3dist(pysaml2) >= 4.5.0
+BuildRequires:  python3dist(pyyaml) >= 3.11
+BuildRequires:  python3dist(service-identity) >= 18.1
+BuildRequires:  python3dist(signedjson) >= 1.1.0
+BuildRequires:  python3dist(sortedcontainers) >= 1.4.4
+BuildRequires:  python3dist(systemd-python) >= 231
+BuildRequires:  python3dist(treq) >= 15.1
+BuildRequires:  python3dist(twisted) >= 18.9.0
+#BuildRequires:  python3dist(txacme) >= 0.9.2
+BuildRequires:  python3dist(typing-extensions) >= 3.7.4
+BuildRequires:  python3dist(unpaddedbase64) >= 1.1
 BuildRequires:  systemd
+
+# Test dependencies
+BuildRequires:  python3dist(mock) >= 2.0
+BuildRequires:  python3dist(parameterized) >= 0.7
+BuildRequires:  openssl
 
 Requires(pre):  shadow-utils
 Requires:       systemd
@@ -135,6 +136,9 @@ exit 0
 
 
 %changelog
+* Sat Oct 31 08:26:40 +03 2020 ElXreno <elxreno@gmail.com> - 1.22.1-1
+- Update to version 1.22.1
+
 * Tue Oct 27 17:29:30 +03 2020 ElXreno <elxreno@gmail.com> - 1.22.0-1
 - Update to version 1.22.0
 
