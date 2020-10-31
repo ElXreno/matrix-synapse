@@ -21,38 +21,38 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  python3dist(setuptools)
 
 # Package dependencies
-BuildRequires:  python3dist(attrs) >= 19.1.0
+BuildRequires:  python3dist(attrs) >= 19.1
 BuildRequires:  python3dist(authlib)
-BuildRequires:  python3dist(bcrypt) >= 3.1.0
+BuildRequires:  python3dist(bcrypt) >= 3.1
 BuildRequires:  python3dist(bleach) >= 1.4.3
 BuildRequires:  python3dist(canonicaljson) >= 1.4
 BuildRequires:  python3dist(daemonize) >= 2.3.1
-BuildRequires:  python3dist(frozendict) >= 1.0
+BuildRequires:  python3dist(frozendict) >= 1
 BuildRequires:  python3dist(hiredis)
 BuildRequires:  python3dist(idna) >= 2.5
 BuildRequires:  python3dist(jinja2) >= 2.9
 BuildRequires:  python3dist(jsonschema) >= 2.5.1
 BuildRequires:  python3dist(pyjwt)
-BuildRequires:  python3dist(lxml) >= 3.5.0
+BuildRequires:  python3dist(lxml) >= 3.5
 BuildRequires:  python3dist(matrix-synapse-ldap3) >= 0.1
 BuildRequires:  python3dist(msgpack) >= 0.5.2
 BuildRequires:  python3dist(netaddr) >= 0.7.18
-BuildRequires:  python3dist(phonenumbers) >= 8.2.0
-BuildRequires:  python3dist(pillow) >= 4.3.0
+BuildRequires:  python3dist(phonenumbers) >= 8.2
+BuildRequires:  python3dist(pillow) >= 4.3
 BuildRequires:  python3dist(prometheus-client) < 0.9
 BuildRequires:  python3dist(pyasn1) >= 0.1.9
 BuildRequires:  python3dist(pyasn1-modules) >= 0.0.7
 BuildRequires:  python3dist(pymacaroons) >= 0.13
 BuildRequires:  python3dist(pynacl) >= 1.2.1
-BuildRequires:  python3dist(pyopenssl) >= 16.0.0
-BuildRequires:  python3dist(pysaml2) >= 4.5.0
+BuildRequires:  python3dist(pyopenssl) >= 16
+BuildRequires:  python3dist(pysaml2) >= 4.5
 BuildRequires:  python3dist(pyyaml) >= 3.11
 BuildRequires:  python3dist(service-identity) >= 18.1
-BuildRequires:  python3dist(signedjson) >= 1.1.0
+BuildRequires:  python3dist(signedjson) >= 1.1
 BuildRequires:  python3dist(sortedcontainers) >= 1.4.4
 BuildRequires:  python3dist(systemd-python) >= 231
 BuildRequires:  python3dist(treq) >= 15.1
-BuildRequires:  python3dist(twisted) >= 18.9.0
+BuildRequires:  python3dist(twisted) >= 18.9
 #BuildRequires:  python3dist(txacme) >= 0.9.2
 BuildRequires:  python3dist(typing-extensions) >= 3.7.4
 BuildRequires:  python3dist(unpaddedbase64) >= 1.1
