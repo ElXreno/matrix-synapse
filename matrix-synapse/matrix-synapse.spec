@@ -6,7 +6,7 @@
 %{?python_enable_dependency_generator}
 
 Name:           matrix-%{srcname}
-Version:        1.23.0
+Version:        1.24.0
 Release:        1%{?dist}
 Summary:        A Matrix reference homeserver written in Python using Twisted
 License:        ASL 2.0
@@ -19,6 +19,10 @@ BuildArch:      noarch
 
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  python3dist(setuptools)
+
+# Workaround until pysaml2 not include xmlsec1
+BuildRequires:  xmlsec1
+Requires:       xmlsec1
 
 # Package dependencies
 BuildRequires:  python3dist(attrs) >= 19.1
@@ -56,6 +60,7 @@ BuildRequires:  python3dist(twisted) >= 18.9
 #BuildRequires:  python3dist(txacme) >= 0.9.2
 BuildRequires:  python3dist(typing-extensions) >= 3.7.4
 BuildRequires:  python3dist(unpaddedbase64) >= 1.1
+BuildRequires:  python3dist(pysaml2) < 6.4.0
 BuildRequires:  systemd
 
 # Test dependencies
@@ -136,6 +141,9 @@ exit 0
 
 
 %changelog
+* Wed Dec  9 15:45:50 +03 2020 ElXreno <elxreno@gmail.com> - 1.24.0-1
+- Update to version 1.24.0
+
 * Wed Nov 18 21:11:36 +03 2020 ElXreno <elxreno@gmail.com> - 1.23.0-1
 - Update to version 1.23.0
 
