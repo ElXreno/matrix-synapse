@@ -7,7 +7,7 @@
 
 Name:           matrix-%{srcname}
 Version:        1.25.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Matrix reference homeserver written in Python using Twisted
 License:        ASL 2.0
 URL:            https://github.com/matrix-org/%{srcname}
@@ -26,11 +26,10 @@ Requires:       xmlsec1
 
 # Package dependencies
 BuildRequires:  python3dist(attrs) >= 19.1
-BuildRequires:  python3dist(authlib)
+BuildRequires:  python3dist(authlib) >= 0.14
 BuildRequires:  python3dist(bcrypt) >= 3.1
 BuildRequires:  python3dist(bleach) >= 1.4.3
 BuildRequires:  python3dist(canonicaljson) >= 1.4
-BuildRequires:  python3dist(daemonize) >= 2.3.1
 BuildRequires:  python3dist(frozendict) >= 1
 BuildRequires:  python3dist(hiredis)
 BuildRequires:  python3dist(idna) >= 2.5
@@ -43,13 +42,14 @@ BuildRequires:  python3dist(msgpack) >= 0.5.2
 BuildRequires:  python3dist(netaddr) >= 0.7.18
 BuildRequires:  python3dist(phonenumbers) >= 8.2
 BuildRequires:  python3dist(pillow) >= 4.3
-BuildRequires:  python3dist(prometheus-client) < 0.9
+BuildRequires:  python3dist(prometheus-client) >= 0.4
 BuildRequires:  python3dist(pyasn1) >= 0.1.9
 BuildRequires:  python3dist(pyasn1-modules) >= 0.0.7
 BuildRequires:  python3dist(pymacaroons) >= 0.13
 BuildRequires:  python3dist(pynacl) >= 1.2.1
 BuildRequires:  python3dist(pyopenssl) >= 16
 BuildRequires:  python3dist(pysaml2) >= 4.5
+BuildRequires:  python3dist(pysaml2) < 6.4.0
 BuildRequires:  python3dist(pyyaml) >= 3.11
 BuildRequires:  python3dist(service-identity) >= 18.1
 BuildRequires:  python3dist(signedjson) >= 1.1
@@ -57,10 +57,8 @@ BuildRequires:  python3dist(sortedcontainers) >= 1.4.4
 BuildRequires:  python3dist(systemd-python) >= 231
 BuildRequires:  python3dist(treq) >= 15.1
 BuildRequires:  python3dist(twisted) >= 18.9
-#BuildRequires:  python3dist(txacme) >= 0.9.2
 BuildRequires:  python3dist(typing-extensions) >= 3.7.4
 BuildRequires:  python3dist(unpaddedbase64) >= 1.1
-BuildRequires:  python3dist(pysaml2) < 6.4.0
 BuildRequires:  systemd
 
 # Test dependencies
@@ -141,6 +139,9 @@ exit 0
 
 
 %changelog
+* Wed Jan 13 15:06:24 +03 2021 ElXreno <elxreno@gmail.com> - 1.25.0-2
+- Update dependencies
+
 * Wed Jan 13 14:48:35 +03 2021 ElXreno <elxreno@gmail.com> - 1.25.0-1
 - Update to version 1.25.0
 
