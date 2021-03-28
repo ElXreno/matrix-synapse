@@ -4,8 +4,8 @@
 %global with_doc 1
 
 Name:           python-%{pypi_name}
-Version:        18.6.0
-Release:        5%{?dist}
+Version:        21.1.0
+Release:        1%{?dist}
 Summary:        A requests-like API built on top of twisted.web's Agent
 
 License:        MIT
@@ -34,8 +34,9 @@ Summary:        %{summary}
  
 Requires:       python3-incremental
 Requires:       python3-requests >= 2.1.0
-Requires:       python3-six
-Requires:       python3-twisted >= 16.3.0
+Requires:       python3-hyperlink >= 21.0.0
+Requires:       python3-six >= 1.13.0
+Requires:       python3-twisted >= 18.7.0
 Requires:       python3-attrs
 %description -n python3-%{pypi_name}
 treq is an HTTP library inspired by requests but written on top of
@@ -83,6 +84,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+* Sun Mar 28 2021 ElXreno <elxreno@gmail.com> - 21.1.0-1
+- Update to 21.1.0
+
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 18.6.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
