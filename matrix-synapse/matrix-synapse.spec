@@ -30,6 +30,7 @@ BuildRequires:  python3dist(authlib) >= 0.14
 BuildRequires:  python3dist(bcrypt) >= 3.1
 BuildRequires:  python3dist(bleach) >= 1.4.3
 BuildRequires:  python3dist(canonicaljson) >= 1.4
+BuildRequires:  python3dist(cryptography) >= 3.4.7
 BuildRequires:  python3dist(frozendict) >= 1
 BuildRequires:  python3dist(hiredis)
 BuildRequires:  python3dist(idna) >= 2.5
