@@ -16,7 +16,7 @@
 %global pysrcname cryptography_vectors
 
 Name:           python-%{srcname}
-Version:        3.4.6
+Version:        3.4.7
 Release:        1%{?dist}
 License:        ASL 2.0 or BSD
 Summary:        Test vectors for the cryptography package
@@ -105,6 +105,9 @@ rm -vrf %{pysrcname}.egg-info
 %endif
 
 %changelog
+* Sun Mar 28 2021 ElXreno <elxreno@gmail.com> - 3.4.7-1
+- Update to 3.4.7
+
 * Wed Mar 03 2021 Christian Heimes <cheimes@redhat.com> - 3.4.6-1
 - Update to 3.4.6 (#1927044)
 
