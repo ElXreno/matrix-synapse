@@ -6,7 +6,7 @@
 %global pyo3_version 0.13.1
 
 Name:           python-%{srcname}
-Version:        3.4.6
+Version:        3.4.7
 Release:        1%{?dist}
 Summary:        PyCA's cryptography library
 
@@ -119,6 +119,9 @@ PYTHONPATH=%{buildroot}%{python3_sitearch} %{__python3} -m pytest -k "not (test_
 %{python3_sitearch}/%{srcname}-%{version}-py*.egg-info
 
 %changelog
+* Sun Mar 28 2021 ElXreno <elxreno@gmail.com> - 3.4.7-1
+- Update to 3.4.7
+
 * Wed Mar 03 2021 Christian Heimes <cheimes@redhat.com> - 3.4.6-1
 - Update to 3.4.6 (#1927044)
 
