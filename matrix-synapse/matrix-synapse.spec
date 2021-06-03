@@ -34,6 +34,7 @@ BuildRequires:  python3dist(cryptography) >= 3.4.7
 BuildRequires:  python3dist(frozendict) >= 1
 BuildRequires:  python3dist(hiredis)
 BuildRequires:  python3dist(idna) >= 2.5
+BuildRequires:  python3dist(ijson) >= 3
 BuildRequires:  python3dist(jinja2) >= 2.9
 BuildRequires:  python3dist(jsonschema) >= 2.5.1
 BuildRequires:  python3dist(pyjwt)
