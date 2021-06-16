@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python wrapper for hiredis
 
 License:        BSD
@@ -46,5 +46,8 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info
 
 %changelog
+* Wed Jun 16 2021 mockbuilder - 1.1.0-2
+- rebuilt
+
 * Sat Oct 31 2020 ElXreno <elxreno@gmail.com> - 1.1.0-1
 - Initial package.

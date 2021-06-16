@@ -2,7 +2,7 @@
 
 Name:           python-%{srcname}
 Version:        3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Iterative JSON parser with a standard Python iterator interface
 
 License:        BSD-3-Clause
@@ -50,6 +50,9 @@ cp %{SOURCE1} .
 %{python3_sitelib}/%{srcname}/
 
 %changelog
+* Wed Jun 16 2021 mockbuilder - 3.0-2
+- rebuilt
+
 * Thu Apr  9 2020 Marketa Calabkova <mcalabkova@suse.com>
 - update to 3.0
   * Exposing backend's name under ``<backend>.backend``,
