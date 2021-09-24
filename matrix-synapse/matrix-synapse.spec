@@ -6,7 +6,7 @@
 %{?python_enable_dependency_generator}
 
 Name:       matrix-%{srcname}
-Version:    1.42.0
+Version:    1.43.0
 Release:    1%{?dist}
 Summary:    A Matrix reference homeserver written in Python using Twisted
 License:    ASL 2.0
@@ -140,6 +140,9 @@ exit 0
 
 
 %changelog
+* Fri Sep 24 2021 ElXreno <elxreno@gmail.com> - 1.43.0-1
+- Update to version 1.43.0
+
 * Thu Sep 09 2021 Kai A. Hiller <V02460@gmail.com> - 1.42.0-1
 - Update to v1.42.0
 
