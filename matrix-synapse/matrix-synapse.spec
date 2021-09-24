@@ -5,68 +5,67 @@
 
 %{?python_enable_dependency_generator}
 
-Name:           matrix-%{srcname}
-Version:        1.36.0
-Release:        1%{?dist}
-Summary:        A Matrix reference homeserver written in Python using Twisted
-License:        ASL 2.0
-URL:            https://github.com/matrix-org/%{srcname}
-Source0:        %{url}/archive/v%{version}%{rcx}/%{srcname}-%{version}%{rcx}.tar.gz
-Source1:        synapse.sysconfig
-Source2:        synapse.service
+Name:       matrix-%{srcname}
+Version:    1.42.0
+Release:    1%{?dist}
+Summary:    A Matrix reference homeserver written in Python using Twisted
+License:    ASL 2.0
+URL:        https://github.com/matrix-org/%{srcname}
+Source0:    %{url}/archive/v%{version}%{rcx}/%{srcname}-%{version}%{rcx}.tar.gz
+Source1:    synapse.sysconfig
+Source2:    synapse.service
+# non-upstreamable patch to accept any version of python-cryptography, see RHBZ#1978949
+Patch1:     0001-relax-cryptography-dependency-version-requirement.patch
+BuildArch:  noarch
 
-BuildArch:      noarch
-
-BuildRequires:  pkgconfig(python3)
-BuildRequires:  python3dist(setuptools)
-
-# Workaround until pysaml2 not include xmlsec1
-BuildRequires:  xmlsec1
-Requires:       xmlsec1
-
-# Package dependencies
-BuildRequires:  python3dist(attrs) >= 19.1
-BuildRequires:  python3dist(authlib) >= 0.14
-BuildRequires:  python3dist(bcrypt) >= 3.1
-BuildRequires:  python3dist(bleach) >= 1.4.3
-BuildRequires:  python3dist(canonicaljson) >= 1.4
-BuildRequires:  python3dist(cryptography) >= 3.4.7
-BuildRequires:  python3dist(frozendict) >= 1
-BuildRequires:  python3dist(hiredis)
-BuildRequires:  python3dist(idna) >= 2.5
-BuildRequires:  python3dist(ijson) >= 3
-BuildRequires:  python3dist(jinja2) >= 2.9
-BuildRequires:  python3dist(jsonschema) >= 2.5.1
-BuildRequires:  python3dist(pyjwt)
-BuildRequires:  python3dist(lxml) >= 3.5
-BuildRequires:  python3dist(matrix-synapse-ldap3) >= 0.1
-BuildRequires:  python3dist(msgpack) >= 0.5.2
-BuildRequires:  python3dist(netaddr) >= 0.7.18
-BuildRequires:  python3dist(phonenumbers) >= 8.2
-BuildRequires:  python3dist(pillow) >= 4.3
-BuildRequires:  python3dist(prometheus-client) >= 0.4
-BuildRequires:  python3dist(pyasn1) >= 0.1.9
-BuildRequires:  python3dist(pyasn1-modules) >= 0.0.7
-BuildRequires:  python3dist(pymacaroons) >= 0.13
-BuildRequires:  python3dist(pynacl) >= 1.2.1
-BuildRequires:  python3dist(pyopenssl) >= 16
-BuildRequires:  python3dist(pysaml2) >= 4.5
-BuildRequires:  python3dist(pysaml2) < 6.4.0
-BuildRequires:  python3dist(pyyaml) >= 3.11
-BuildRequires:  python3dist(service-identity) >= 18.1
-BuildRequires:  python3dist(signedjson) >= 1.1
-BuildRequires:  python3dist(sortedcontainers) >= 1.4.4
-BuildRequires:  python3dist(systemd-python) >= 231
-BuildRequires:  python3dist(treq) >= 15.1
-BuildRequires:  python3dist(twisted) >= 18.9
-BuildRequires:  python3dist(typing-extensions) >= 3.7.4
-BuildRequires:  python3dist(unpaddedbase64) >= 1.1
-BuildRequires:  systemd
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 # Test dependencies
-BuildRequires:  python3dist(mock) >= 2.0
-BuildRequires:  python3dist(parameterized) >= 0.7
-BuildRequires:  openssl
+BuildRequires:  python3-mock >= 2.0
+BuildRequires:  python3-parameterized >= 0.7.0
+BuildRequires:  /usr/bin/openssl
+
+# Package dependencies
+#BuildRequires:  python3-txacme >= 0.9.2
+BuildRequires:  (python3-attrs >= 19.2.0 without python3-attrs = 21.1.0)
+BuildRequires:  python3-authlib
+BuildRequires:  python3-bcrypt >= 3.1.0
+BuildRequires:  python3-bleach >= 1.4.3
+BuildRequires:  python3-canonicaljson >= 1.4.0
+# v3.4.7 affects only the binary distribution, so using v3.4.6 is fine.
+BuildRequires:  python3-cryptography >= 3.4.6
+BuildRequires:  python3-daemonize >= 2.3.1
+BuildRequires:  python3-frozendict >= 1.0
+BuildRequires:  python3-idna >= 2.5
+BuildRequires:  python3-ijson
+BuildRequires:  python3-jinja2 >= 2.9
+BuildRequires:  python3-jsonschema
+BuildRequires:  python3-jwt
+BuildRequires:  python3-lxml >= 3.5.0
+BuildRequires:  python3-matrix-synapse-ldap3 >= 0.1
+BuildRequires:  python3-msgpack >= 0.5.2
+BuildRequires:  python3-netaddr >= 0.7.18
+BuildRequires:  python3-phonenumbers >= 8.2.0
+BuildRequires:  python3-pillow >= 4.3.0
+BuildRequires:  python3-prometheus_client
+BuildRequires:  python3-pyOpenSSL >= 16.0.0
+BuildRequires:  python3-pyasn1 >= 0.1.9
+BuildRequires:  python3-pyasn1-modules >= 0.0.7
+BuildRequires:  python3-pymacaroons-pynacl >= 0.13.0
+BuildRequires:  python3-pynacl >= 1.2.1
+BuildRequires:  python3-pysaml2 >= 4.5.0
+BuildRequires:  python3-pyyaml >= 3.11
+BuildRequires:  python3-service-identity >= 18.1.0
+BuildRequires:  python3-signedjson >= 1.1.0
+BuildRequires:  python3-sortedcontainers >= 1.4.4
+BuildRequires:  python3-systemd >= 231
+BuildRequires:  python3-treq >= 15.1
+BuildRequires:  python3-twisted >= 18.9.0
+BuildRequires:  python3-typing-extensions >= 3.7.4
+BuildRequires:  python3-unpaddedbase64 >= 1.1.0
+BuildRequires:  systemd
+BuildRequires:  xmlsec1
 
 Requires(pre):  shadow-utils
 Requires:       systemd
@@ -141,74 +140,56 @@ exit 0
 
 
 %changelog
-* Tue Jun 15 2021 mockbuilder - 1.36.0-1
-- Update to version 1.36.0
+* Thu Sep 09 2021 Kai A. Hiller <V02460@gmail.com> - 1.42.0-1
+- Update to v1.42.0
 
-* Thu Jun 03 2021 ElXreno <elxreno@gmail.com> - 1.35.1-1
-- Update to version 1.35.1
+* Tue Aug 31 2021 Kai A. Hiller <V02460@gmail.com> - 1.41.1-1
+- Update to v1.41.1
+- Fix CVE-2021-39163, CVE-2021-39164
 
-* Mon May 17 2021 ElXreno <elxreno@gmail.com> - 1.34.0-1
-- Update to version 1.34.0
+* Tue Aug 24 2021 Kai A. Hiller <V02460@gmail.com> - 1.41.0-1
+- Update to v1.41.0
 
-* Tue May 11 2021 ElXreno <elxreno@gmail.com> - 1.33.2-1
-- Update to version 1.33.2
+* Tue Aug 10 2021 Kai A. Hiller <V02460@gmail.com> - 1.40.0-1
+- Update to v1.40.0
 
-* Thu May 06 2021 ElXreno <elxreno@gmail.com> - 1.33.1-1
-- Update to version 1.33.1
+* Thu Jul 29 2021 Kai A. Hiller <V02460@gmail.com> - 1.39.0-1
+- Update to v1.39.0
 
-* Wed May 05 2021 ElXreno <elxreno@gmail.com> - 1.33.0-1
-- Update to version 1.33.0
+* Fri Jul 23 2021 Kai A. Hiller <V02460@gmail.com> - 1.38.1-1
+- Update to v1.38.1
 
-* Thu Apr 22 2021 ElXreno <elxreno@gmail.com> - 1.32.2-1
-- Update to version 1.32.2
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.38.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
-* Wed Apr 21 2021 ElXreno <elxreno@gmail.com> - 1.32.1-1
-- Update to version 1.32.1
+* Sun Jul 18 2021 Dan Callaghan <djc@djc.id.au> - 1.38.0-2
+- fix startup ordering of synapse.service (RHBZ#1910740)
+- relax version requirement for python3-cryptography
 
-* Tue Apr 20 2021 ElXreno <elxreno@gmail.com> - 1.32.0-1
-- Update to version 1.32.0
+* Wed Jul 14 2021 Kai A. Hiller <V02460@gmail.com> - 1.38.0-1
+- Update to v1.38.0
 
-* Tue Apr 06 2021 ElXreno <elxreno@gmail.com> - 1.31.0-1
-- Update to version 1.31.0
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 1.26.0-3
+- Rebuilt for Python 3.10
 
-* Sun Mar 28 2021 ElXreno <elxreno@gmail.com> - 1.30.1-1
-- Update to version 1.30.1
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 1.26.0-2
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
 
-* Tue Mar 23 2021 ElXreno <elxreno@gmail.com> - 1.30.0-1
-- Update to version 1.30.0
+* Thu Jan 28 2021 Kai A. Hiller <V02460@gmail.com> - 1.26.0-1
+- Update to v1.26.0
 
-* Mon Mar 08 2021 ElXreno <elxreno@gmail.com> - 1.29.0-1
-- Update to version 1.29.0
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.25.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
-* Thu Feb 25 2021 ElXreno <elxreno@gmail.com> - 1.28.0-1
-- Update to version 1.28.0
+* Wed Jan 13 2021 Kai A. Hiller <V02460@gmail.com - 1.25.0-1
+- Update to v1.25.0
 
-* Tue Feb 16 2021 ElXreno <elxreno@gmail.com> - 1.27.0-1
-- Update to version 1.27.0
+* Wed Dec 09 2020 Kai A. Hiller <V02460@gmail.com> - 1.24.0-1
+- Update to v1.24.0
 
-* Wed Jan 27 2021 ElXreno <elxreno@gmail.com> - 1.26.0-1
-- Update to version 1.26.0
-
-* Wed Jan 13 15:06:24 +03 2021 ElXreno <elxreno@gmail.com> - 1.25.0-2
-- Update dependencies
-
-* Wed Jan 13 14:48:35 +03 2021 ElXreno <elxreno@gmail.com> - 1.25.0-1
-- Update to version 1.25.0
-
-* Wed Dec  9 15:45:50 +03 2020 ElXreno <elxreno@gmail.com> - 1.24.0-1
-- Update to version 1.24.0
-
-* Wed Nov 18 21:11:36 +03 2020 ElXreno <elxreno@gmail.com> - 1.23.0-1
-- Update to version 1.23.0
-
-* Sat Oct 31 08:26:40 +03 2020 ElXreno <elxreno@gmail.com> - 1.22.1-1
-- Update to version 1.22.1
-
-* Tue Oct 27 17:29:30 +03 2020 ElXreno <elxreno@gmail.com> - 1.22.0-1
-- Update to version 1.22.0
-
-* Tue Oct 27 13:20:34 +03 2020 ElXreno <elxreno@gmail.com> - 1.21.2-1
-- Update to version 1.21.2
+* Mon Nov 30 2020 Gwyn Ciesla <gwync@protonmail.com> - 1.23.0-1
+- 1.23.0
 
 * Sat Aug 29 2020 Kai A. Hiller <V02460@gmail.com> - 1.18.0-1
 - Update to v1.18.0

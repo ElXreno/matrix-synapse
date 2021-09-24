@@ -1,0 +1,31 @@
+From 4bdcf996757a5d13df63f7891a1dd4c7186c20dc Mon Sep 17 00:00:00 2001
+From: Dan Callaghan <djc@djc.id.au>
+Date: Sun, 18 Jul 2021 13:18:10 +1000
+Subject: [PATCH] relax cryptography dependency version requirement
+
+In Fedora, python-cryptography does not bundle OpenSSL, so it's always
+up to date. This strict version requirement is not necessary. See:
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1978949
+---
+ synapse/python_dependencies.py | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
+index 271c17c22..e8a71d477 100644
+--- a/synapse/python_dependencies.py
++++ b/synapse/python_dependencies.py
+@@ -82,9 +82,7 @@
+     "Jinja2>=2.9",
+     "bleach>=1.4.3",
+     "typing-extensions>=3.7.4",
+-    # We enforce that we have a `cryptography` version that bundles an `openssl`
+-    # with the latest security patches.
+-    "cryptography>=3.4.7",
++    "cryptography>=3.4",
+     "ijson>=3.0",
+ ]
+ 
+-- 
+2.31.1
+
