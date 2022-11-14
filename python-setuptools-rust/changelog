@@ -1,0 +1,25 @@
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.12.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Jun 02 2021 Python Maint <python-maint@redhat.com> - 0.12.1-2
+- Rebuilt for Python 3.10
+
+* Thu Mar 11 2021 Christian Heimes <cheimes@redhat.com> - 0.12.1-1
+- Update to 0.12.1
+
+* Tue Mar 09 2021 Christian Heimes <cheimes@redhat.com> - 0.12.0-1
+- Update to 0.12.0 (#1936679)
+- Run tomlgen example as test case
+
+* Thu Feb 11 2021 Christian Heimes <cheimes@redhat.com> - 0.11.6-4
+- Fix RHEL build: remove wheel build requirements, use rust-toolset
+
+* Thu Feb 11 2021 Christian Heimes <cheimes@redhat.com> - 0.11.6-3
+- Add RHEL packaging support
+
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.11.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Jan 14 2021 Christian Heimes <cheimes@redhat.com> - 0.11.6-1
+- Initial package.
+- Resolves: rhbz#1906490
